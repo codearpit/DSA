@@ -1,31 +1,23 @@
+
 class Solution {
 public:
-    std::vector<std::string> findItinerary(std::vector<std::vector<std::string>>& tickets) {
-        std::unordered_map<std::string, std::vector<std::string>> graph;
-        
-        for (auto& ticket : tickets) {
-            graph[ticket[0]].push_back(ticket[1]);
+   
+    vector<string> findItinerary(vector<vector<string>>& tickets) {
+        for(int i = 0; i < tickets.size(); i++){
+            targets[tickets[i][0]].insert(tickets[i][1]);
         }
-        
-        for (auto& [_, dests] : graph) {
-            std::sort(dests.rbegin(), dests.rend());
+        visit("JFK");
+        return vector<string>(route.rbegin(), route.rend());
+    }
+     unordered_map<string, multiset<string>> targets;
+    vector<string> route;
+
+    void visit (string airport){
+        while(targets[airport].size()){
+            string next = *targets[airport].begin();
+            targets[airport].erase(targets[airport].begin());
+            visit(next);
         }
-        
-        std::vector<std::string> stack = {"JFK"};
-        std::vector<std::string> itinerary;
-        
-        while (!stack.empty()) {
-            std::string curr = stack.back();
-            if (graph.find(curr) != graph.end() && !graph[curr].empty()) {
-                stack.push_back(graph[curr].back());
-                graph[curr].pop_back();
-            } else {
-                itinerary.push_back(stack.back());
-                stack.pop_back();
-            }
-        }
-        
-        std::reverse(itinerary.begin(), itinerary.end());
-        return itinerary;
+        route.push_back(airport);
     }
 };
