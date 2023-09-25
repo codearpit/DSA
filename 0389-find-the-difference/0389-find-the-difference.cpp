@@ -1,13 +1,12 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        int str[26] = {0};
-        for(auto ch:s)  str[ch - 'a']++;
-
-        for(int i = 0; i < t.length(); i++){
-            if(str[t[i] - 'a'] == 0) return t[i];
-            str[t[i] - 'a']--;
+        int i,sum = 0;
+        for( i = 0; i < s.length(); i++){
+            sum=sum + int(s[i]) - int(t[i]);
         }
-        return NULL;
+        cout<<sum<<" "<<t[i];
+        sum = sum - int(t[i]);
+        return char(abs(sum));
     }
 };
