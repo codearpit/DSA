@@ -15,6 +15,7 @@ public:
              if(ump.find(x+1) != ump.end()){
                 ans = max(ans, ump[x] + ump[x+1]);
             }
+            ump.erase(x);
         }
         return ans;
     }
