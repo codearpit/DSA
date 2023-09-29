@@ -20,6 +20,7 @@ public:
     bool isMonotonic(vector<int>& arr) {
         int i = 0;
         int n = arr.size();
+        if(n<3) return true;
         while(i<n - 1){
             if(arr[i] == arr[i+1]) i++;
 
