@@ -1,5 +1,11 @@
 // https://leetcode.com/problems/rotting-oranges/solutions/892106/easy-c-bfs-solution-well-explained/
-
+static const int fast_io = []()
+{
+    std::ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    return 0;
+}();
 
 class Solution {
 public:
