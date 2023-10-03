@@ -1,11 +1,8 @@
 class Solution {
 public:
-        int numIdenticalPairs(vector<int>& A) {
-        int ans = 0;
-        unordered_map<int, int> cnt;
-        for (int x: A) {
-        ans += cnt[x]++;
-        }
-        return ans;
+            int numIdenticalPairs(vector<int>& A) {
+        return accumulate(A.begin(), A.end(), 0, [count = unordered_map<int, int> {}] (auto x, auto y) mutable {
+            return x + count[y]++;
+        });
     }
 };
