@@ -1,28 +1,20 @@
 class Solution {
 public:
-    bool winnerOfGame(string colors) {
-        int a = 0; 
-        int b = 0;
-
-        int i = 0;
-        while (i < colors.size()) {
-            // A
-            int da = 0;
-            while (i < colors.size() && colors[i] == 'A') {
-                ++i;
-                ++da;
+    bool winnerOfGame(string &colors) {
+        int rema = 0;
+        int remb = 0;
+        for (int i = 1; i + 1 < colors.size(); i++) {
+            if (colors[i] == 'A') {
+                if (colors[i - 1] == 'A' && colors[i + 1] == 'A') {
+                    rema++;
+                }
             }
-            a += max(0, da - 2);
-
-            // B
-            int db = 0; 
-            while (i < colors.size() && colors[i] == 'B') {
-                ++i;
-                ++db;
+            else {
+                if (colors[i - 1] == 'B' && colors[i + 1] == 'B') {
+                    remb++;
+                }
             }
-            b+= max(0, db - 2);
         }
-
-        return a > b;
+        return   rema > remb;
     }
 };
