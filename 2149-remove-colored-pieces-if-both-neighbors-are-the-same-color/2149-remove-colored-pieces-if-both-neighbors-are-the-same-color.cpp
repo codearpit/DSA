@@ -1,20 +1,13 @@
 class Solution {
 public:
     bool winnerOfGame(string colors) {
-        map<char, int> c;
-        for (auto it = colors.begin(); it != colors.end(); ) {
-            char x = *it;
-            auto t = it;
-            while (t != colors.end() && *t == x) {
-                t++;
+        int alice = 0, bob = 0;
+        for(int i = 1; i < colors.size() - 1; i++){
+            if(colors[i - 1] == colors[i] and colors[i] == colors[i + 1] ){
+                if(colors[i] == 'A') alice++;
+                else bob++;
             }
-            c[x] += max(int(distance(it, t) - 2), 0);
-            it = t;
         }
-
-        if (c['A'] > c['B']) {
-            return true;
-        }
-        return false;
+        return alice - bob >=1;
     }
 };
