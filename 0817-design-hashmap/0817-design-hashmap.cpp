@@ -1,6 +1,6 @@
 class MyHashMap {
 	vector<vector<pair<int, int>>> map;
-	const int size = 10000;
+	const int size = 1000;
 public:
 	/** Initialize your data structure here. */
 	MyHashMap() {
