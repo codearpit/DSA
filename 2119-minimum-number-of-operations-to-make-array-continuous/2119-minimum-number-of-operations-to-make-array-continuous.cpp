@@ -11,10 +11,12 @@ public:
             newNums.push_back(num);
         }
         
+        int j = 0;
         for (int i = 0; i < newNums.size(); i++) {
-            int left = newNums[i];
-            int right = left + n - 1;
-            int j = upper_bound(newNums.begin(), newNums.end(), right) - newNums.begin();
+            while (j < newNums.size() && newNums[j] < newNums[i] + n) {
+                j++;
+            }
+            
             int count = j - i;
             ans = min(ans, n - count);
         }
