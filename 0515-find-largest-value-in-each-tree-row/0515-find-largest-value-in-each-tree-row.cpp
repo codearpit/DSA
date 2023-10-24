@@ -31,7 +31,7 @@ public:
             }
             ans.push_back(max_ele);
         }
-        root->left=NULL;root->right=NULL;
+        // root->left=NULL;root->right=NULL;
         return ans;
     }
 };
