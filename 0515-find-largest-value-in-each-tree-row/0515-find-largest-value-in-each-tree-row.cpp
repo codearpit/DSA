@@ -28,7 +28,6 @@ public:
                 max_ele= max(max_ele, node->val);
                 if(node->left) q.push(node->left);
                 if(node->right) q.push(node->right);
-
             }
             ans.push_back(max_ele);
         }
